@@ -168,14 +168,7 @@ app.get('/test', (req, res) => {
   });
 });
 
-// เพิ่ม endpoint สำหรับทดสอบ CORS
-app.options('*', (req, res) => {
-  console.log('✅ CORS preflight check');
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type,Accept,Authorization');
-  res.sendStatus(200);
-});
+// CORS is already handled by the cors() middleware above, so we don't need manual OPTIONS handling
 
 // เพิ่ม endpoint สำหรับทดสอบการส่งข้อมูล
 app.post('/test-notification', async (req, res) => {
