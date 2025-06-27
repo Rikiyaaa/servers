@@ -210,8 +210,8 @@ app.use((err, req, res, next) => {
   });
 });
 
-// Handle 404
-app.use('*', (req, res) => {
+// Handle 404 - Fixed the problematic route pattern
+app.use((req, res) => {
   console.log(`❓ 404 - Path not found: ${req.method} ${req.originalUrl}`);
   res.status(404).json({
     ok: false,
